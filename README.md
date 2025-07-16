@@ -1,97 +1,88 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# MapEvents
 
-# Getting Started
+## Proje Hakkında
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+MapEvents, NASA EONET API'sinden alınan yangın (wildfire) olaylarını Türkiye ve çevresinde harita üzerinde gösteren bir React Native uygulamasıdır. Yangınlşar harita üzerinde marker olarak gösterilir ve ayrıca Yangınların listesi ekranda sunulur.
 
-## Step 1: Start Metro
+## Özellikler
+- **Harita üzerinde yangın olaylarını gösterme** (OpenStreetMap altyapısı ile)
+- **Marker filtreleme:** Sadece Türkiye ve çevresindeki yangınlar gösterilir
+- **Gerçek zamanlı veri:** NASA EONET API'sinden güncel yangın verisi çekilir
+- **Olay listesi:** Harita altındaki listede olay başlıkları gösterilir
+- **Yükleniyor ve hata durumları için kullanıcıya bilgi verme**
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Kullanılan Teknolojiler ve Sürümler
+- React Native: 0.80.1
+- React: 19.1.0
+- react-native-maps: ^1.24.5
+- react-native-map-clustering: ^3.4.2
+- axios: ^1.10.0
+- TypeScript: 5.0.4
+- Jest (test): ^29.6.3
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Kurulum
+
+### 1. Bağımlılıkları Yükleyin
 
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+npm install
+# veya
+yarn install
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
+### 2. Android için Çalıştırma
 
 ```sh
-# Using npm
 npm run android
-
-# OR using Yarn
+# veya
 yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### 3. iOS için Çalıştırma
+İlk kez çalıştırıyorsanız veya native bağımlılıkları güncellediyseniz:
 
 ```sh
-bundle install
+cd ios
+bundle install           # CocoaPods için (ilk kurulumda)
+bundle exec pod install  # CocoaPods bağımlılıklarını yükle
+cd ..
 ```
 
-Then, and every time you update your native dependencies, run:
-
+Sonra:
 ```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
 npm run ios
-
-# OR using Yarn
+# veya
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### 4. Metro Sunucusunu Başlatma
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```sh
+npm start
+# veya
+yarn start
+```
 
-## Step 3: Modify your app
+## Proje Yapısı
 
-Now that you have successfully run the app, let's make changes!
+- `App.tsx`: Ana uygulama dosyası, harita ve marker işlevselliği burada.
+- `android/` ve `ios/`: Native platform dosyaları.
+- `package.json`: Bağımlılıklar ve scriptler.
+- `tsconfig.json`: TypeScript yapılandırması.
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## API Bilgisi
+- Veri kaynağı: [NASA EONET API](https://eonet.gsfc.nasa.gov/api/v2.1/events)
+- Sadece yangın (wildfire) kategorisindeki olaylar filtrelenir.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Geliştirici Notları
+- Proje TypeScript ile yazılmıştır.
+- Harita başlangıç noktası Türkiye'nin merkezine ayarlanmıştır.
+- Sadece geçerli koordinatlara sahip ve Türkiye sınırlarında olan yangınlar gösterilir.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Sürüm Gereksinimleri
+- Node.js >= 18
+- Android Studio veya Xcode (platforma göre)
+- AndroidManifest.xml dosyasında Kendi API Key'inizi girmelisiniz!
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Katkı ve Lisans
+Hakan Tahta
