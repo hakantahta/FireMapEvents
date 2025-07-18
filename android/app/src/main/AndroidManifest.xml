@@ -29,7 +29,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="Kendi API Key'inizi Buraya Ekleyin" />
+            android:value="Buraya API Key Gelecek" />
 
     </application>
 
