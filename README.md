@@ -2,20 +2,35 @@
 
 ## Proje Hakkında
 
-MapEvents, NASA EONET API'sinden alınan yangın (wildfire) olaylarını Türkiye ve çevresinde harita üzerinde gösteren bir React Native uygulamasıdır. Yangınlşar harita üzerinde marker olarak gösterilir ve ayrıca Yangınların listesi ekranda sunulur.
+MapEvents, NASA EONET API'sinden alınan yangın (wildfire) olaylarını Seçilen ülke ve çevresinde harita üzerinde gösteren bir React Native uygulamasıdır. Uygulama, kullanıcıdan ülke seçmesini ister ve seçilen ülke ile çevresindeki yangınları harita üzerinde marker olarak gösterir. Ayrıca yangınların listesi de ekranda sunulur.
+
+## Ekran Görüntüsü / Logo
+
+Uygulama giriş ekranında aşağıdaki logo kullanılır:
+
+```
+MapEvents/assets/logo.png
+```
+
+---
 
 ## Özellikler
+
 - **Harita üzerinde yangın olaylarını gösterme** (OpenStreetMap altyapısı ile)
-- **Marker filtreleme:** Sadece Türkiye ve çevresindeki yangınlar gösterilir
+- **Marker filtreleme:** Sadece seçilen ülke ve çevresindeki yangınlar gösterilir
 - **Gerçek zamanlı veri:** NASA EONET API'sinden güncel yangın verisi çekilir
 - **Olay listesi:** Harita altındaki listede olay başlıkları gösterilir
 - **Yükleniyor ve hata durumları için kullanıcıya bilgi verme**
+- **Kullanıcıdan ülke seçimi** (Türkiye, Yunanistan, İtalya, Fransa, İspanya, Almanya vb.)
 
 ## Kullanılan Teknolojiler ve Sürümler
+
 - React Native: 0.80.1
 - React: 19.1.0
 - react-native-maps: ^1.24.5
 - react-native-map-clustering: ^3.4.2
+- react-native-gesture-handler: ^2.27.1
+- @react-native-picker/picker: ^2.4.10
 - axios: ^1.10.0
 - TypeScript: 5.0.4
 - Jest (test): ^29.6.3
@@ -39,6 +54,7 @@ yarn android
 ```
 
 ### 3. iOS için Çalıştırma
+
 İlk kez çalıştırıyorsanız veya native bağımlılıkları güncellediyseniz:
 
 ```sh
@@ -49,6 +65,7 @@ cd ..
 ```
 
 Sonra:
+
 ```sh
 npm run ios
 # veya
@@ -65,24 +82,32 @@ yarn start
 
 ## Proje Yapısı
 
-- `App.tsx`: Ana uygulama dosyası, harita ve marker işlevselliği burada.
+- `App.tsx`: Ana uygulama dosyası, ekran yönlendirmeleri burada.
+- `LoginScreen.tsx`: Giriş ekranı, ülke seçimi ve logo burada.
+- `MapScreen.tsx`: Harita ve yangın marker'ları burada.
+- `assets/logo.png`: Uygulama logosu.
 - `android/` ve `ios/`: Native platform dosyaları.
 - `package.json`: Bağımlılıklar ve scriptler.
 - `tsconfig.json`: TypeScript yapılandırması.
 
 ## API Bilgisi
+
 - Veri kaynağı: [NASA EONET API](https://eonet.gsfc.nasa.gov/api/v2.1/events)
 - Sadece yangın (wildfire) kategorisindeki olaylar filtrelenir.
 
 ## Geliştirici Notları
+
 - Proje TypeScript ile yazılmıştır.
-- Harita başlangıç noktası Türkiye'nin merkezine ayarlanmıştır.
-- Sadece geçerli koordinatlara sahip ve Türkiye sınırlarında olan yangınlar gösterilir.
+- Harita başlangıç noktası, seçilen ülkenin merkezine ayarlanır.
+- Sadece geçerli koordinatlara sahip ve seçilen ülke sınırlarında olan yangınlar gösterilir.
+- Uygulama giriş ekranında logo ve ülke seçimi bulunur.
 
 ## Sürüm Gereksinimleri
+
 - Node.js >= 18
 - Android Studio veya Xcode (platforma göre)
-- AndroidManifest.xml dosyasında Kendi API Key'inizi girmelisiniz!
+- AndroidManifest.xml dosyasında kendi API Key'inizi girmelisiniz!
 
 ## Katkı ve Lisans
+
 Hakan Tahta
